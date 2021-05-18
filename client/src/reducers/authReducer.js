@@ -16,8 +16,7 @@ const intitialState = {
   user: null,
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = intitialState, action) {
+const authReducer = (state = intitialState, action) => {
   switch (action.type) {
     case USER_LOADING:
       return {
@@ -54,4 +53,6 @@ export default function (state = intitialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default authReducer;

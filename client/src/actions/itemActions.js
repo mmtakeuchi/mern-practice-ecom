@@ -10,7 +10,6 @@ import { returnErrors } from "./errorActions";
 
 export const getItems = () => (dispatch) => {
   dispatch(setItemsLoading());
-
   axios
     .get("/api/items")
     .then((res) =>
@@ -20,19 +19,22 @@ export const getItems = () => (dispatch) => {
       })
     )
     .catch((err) =>
-      dispatch(returnErrors(err.response.date, err.response.status))
+      dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
 
 export const addItem = (item) => (dispatch) => {
-  axios.post("/api/items", item).then((res) =>
-    dispatch({
-      type: ADD_ITEM,
-      payload: res.data,
-    }).catch((err) =>
-      dispatch(returnErrors(err.response.data, err.response.status))
+  axios
+    .post("/api/items", item)
+    .then((res) =>
+      dispatch({
+        type: ADD_ITEM,
+        payload: res.data,
+      })
     )
-  );
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const deleteItem = (id) => (dispatch) => {

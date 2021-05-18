@@ -34,14 +34,14 @@ export const loadUser = () => (dispatch, getState) => {
 export const register =
   ({ name, email, password }) =>
   (dispatch) => {
-    // Headers
+    // headers
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    // Request body
+    //request body
     const body = JSON.stringify({ name, email, password });
 
     axios
@@ -65,14 +65,14 @@ export const register =
 export const login =
   ({ email, password }) =>
   (dispatch) => {
-    // Headers
+    // headers
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    // Request body
+    //request body
     const body = JSON.stringify({ email, password });
 
     axios
@@ -92,7 +92,7 @@ export const login =
         });
       });
   };
-
+// logout user
 export const logout = () => {
   return {
     type: LOGOUT_SUCCESS,
@@ -101,13 +101,13 @@ export const logout = () => {
 
 // Setup config/headers and token
 export const tokenConfig = (getState) => {
-  // Get token from local storage
+  //Get token from local storage
   const token = getState().auth.token;
 
   // Headers
   const config = {
-    headerS: {
-      "Content-Type": "application/json",
+    headers: {
+      "Content-type": "application/json",
     },
   };
 

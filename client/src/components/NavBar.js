@@ -9,13 +9,13 @@ import {
   Container,
   NavLink,
 } from "reactstrap";
-import RegisterModal from "./auth/registerModal";
+import RegisterModal from "./auth/RegisterModal";
 import Logout from "./auth/Logout";
-import LoginModal from "./auth/loginModal";
+import LoginModal from "./auth/LoginModal";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-class AppNavbar extends Component {
+class NavBar extends Component {
   state = {
     isOpen: false,
   };
@@ -42,6 +42,9 @@ class AppNavbar extends Component {
         </NavItem>
         <NavItem>
           <NavLink href="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/additem">Add Item</NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/cart">Cart</NavLink>
@@ -88,4 +91,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, null)(AppNavbar);
+export default connect(mapStateToProps, null)(NavBar);

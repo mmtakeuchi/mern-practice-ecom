@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
-import AppNavbar from "./AppNavbar";
+import NavBar from "./NavBar";
 
 class AddItem extends Component {
   state = {
@@ -47,7 +47,7 @@ class AddItem extends Component {
   render() {
     return (
       <div>
-        <AppNavbar />
+        <NavBar />
         <Container>
           <h2 className="text-center mb-3">Add a new Item</h2>
           {this.props.isAuthenticated ? (

@@ -4,9 +4,8 @@ import { GET_ORDERS, CHECKOUT, ORDERS_LOADING } from "./types";
 
 export const getOrders = (id) => (dispatch) => {
   dispatch(setOrdersLoading());
-
   axios
-    .get(`api/order/${id}`)
+    .get(`/api/order/${id}`)
     .then((res) =>
       dispatch({
         type: GET_ORDERS,

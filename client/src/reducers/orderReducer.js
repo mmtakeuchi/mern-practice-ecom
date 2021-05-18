@@ -1,12 +1,12 @@
-import { GET_ORDERS, CHECKOUT, ORDERS_LOADING } from "../actions/orderActions";
+import { GET_ORDERS, CHECKOUT, ORDERS_LOADING } from "../actions/types";
 
-const intitialState = {
+const initialState = {
   orders: [],
   loading: false,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = intitialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_ORDERS:
       return {

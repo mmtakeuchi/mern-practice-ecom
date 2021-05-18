@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import AppNavbar from "./AppNavbar";
+import NavBar from "./NavBar";
 import {
   Card,
   CardText,
@@ -51,7 +51,7 @@ class Cart extends Component {
     }
     return (
       <div>
-        <AppNavbar />
+        <NavBar />
         {this.props.isAuthenticated ? (
           <Fragment>
             {this.props.cart.cart ? null : (
@@ -77,7 +77,7 @@ class Cart extends Component {
                   <Card>
                     <CardBody>
                       <CardTitle tag="h5">{item.name}</CardTitle>
-                      <CardSubtitle tag="h6">Rs. {item.price}</CardSubtitle>
+                      <CardSubtitle tag="h6">$ {item.price}</CardSubtitle>
                       <CardText>Quantity - {item.quantity}</CardText>
                       <Button
                         color="danger"
@@ -98,7 +98,7 @@ class Cart extends Component {
                 <Card>
                   <CardBody>
                     <CardTitle tag="h5">
-                      Total Cost = Rs. {this.props.cart.cart.bill}
+                      Total Cost = $ {this.props.cart.cart.bill}
                     </CardTitle>
                     <Checkout
                       user={user._id}

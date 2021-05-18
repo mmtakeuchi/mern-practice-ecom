@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const bcrypt = require("bcrypt");
 
-// Signup
 module.exports.signup = (req, res) => {
   const { name, email, password } = req.body;
 
@@ -44,27 +43,20 @@ module.exports.signup = (req, res) => {
   });
 };
 
-// Login
 module.exports.login = async (req, res) => {
   const { email, password } = req.body;
-
   if (!email || !password) {
     res.status(400).json({ msg: "Please enter all fields" });
   }
-
   User.findOne({ email }).then((user) => {
-    if (!user) {
-      return res.status(400).json({ msg: "User does not exist" });
-    }
+    if (!user) return res.status(400).json({ msg: "User does not exist" });
 
     // Validate password
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid Credientals" });
-      }
+      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
       jwt.sign(
-        { id: user_id },
+        { id: user._id },
         config.get("jwtsecret"),
         { expiresIn: 3600 },
         (err, token) => {
@@ -72,7 +64,7 @@ module.exports.login = async (req, res) => {
           res.json({
             token,
             user: {
-              id: user_id,
+              id: user._id,
               name: user.name,
               email: user.email,
             },
