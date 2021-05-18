@@ -1,12 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
-import {
-  GET_CART,
-  ADD_TO_CART,
-  DELETE_FROM_CART,
-  CART_LOADING,
-  DELETE_ITEM,
-} from "./types";
+import { GET_CART, ADD_TO_CART, DELETE_FROM_CART, CART_LOADING } from "./types";
 
 export const getCart = (id) => (dispatch) => {
   dispatch(setCartLoading());
