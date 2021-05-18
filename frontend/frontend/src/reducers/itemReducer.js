@@ -1,4 +1,3 @@
-import { init } from "../../../../models/User";
 import {
   GET_ITEMS,
   ADD_ITEM,
