@@ -6,6 +6,7 @@ const config = require("config");
 const app = express();
 app.use(express.json());
 
+// use in production to serve client files
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// connect to mondoDB and then run serever on port 4000
 const dbURI = config.get("dbURI");
 const port = process.env.PORT || 4000;
 mongoose
